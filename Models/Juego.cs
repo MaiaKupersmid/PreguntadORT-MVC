@@ -38,6 +38,6 @@ public static class Juego
 
     public static void ObtenerProximasRespuestas(int idPregunta)
     {
-        return 
+        
     }
 }

@@ -47,9 +47,7 @@ public static class BD
             string sql = "exec sp_ObtenerRespuestas @IdPregunta;";
             ListadoRespuestas = BD.Query<Respuestas>(sql, new { IdPregunta = pregunta.IdPregunta }).ToList();
         }
-        return ListadoRespuestas;
+        return ListadoRespuestas; 
+        //no se si esta bine 
     }
-
-/* ----------------------------------------------- PREGUNTAR --------------------------------------------------- */
-
 }
