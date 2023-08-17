@@ -2,6 +2,7 @@ namespace TP7_PreguntadORT.Models;
 public static class Juego 
 {
     private static string Username {get; set;}
+    private static int cont {get; set;}
     private static int puntajeActual {get; set;}
     private static int cantidadPreguntasCorrectas {get; set;}
     private static List<Preguntas> _preguntas {get; set;}
@@ -13,6 +14,7 @@ public static class Juego
         Username= "";
         puntajeActual= 0;
         cantidadPreguntasCorrectas= 0;
+        cont = 0;
     }
 
     public static List<Categoria> ObtenerCategorias()
@@ -31,13 +33,27 @@ public static class Juego
         _respuestas = BD.ObtenerRespuestas();
     }
 
-    public static void ObtenerProximaPregunta()
+    public static List<Preguntas> ObtenerProximaPregunta()
     {
-        
+        return _preguntas[cont];
     }
 
-    public static void ObtenerProximasRespuestas(int idPregunta)
+    public static List<Respuestas> ObtenerProximasRespuestas(int idPregunta)
     {
+        foreach (respuesta r in _respuestas)
+        {
+            
+        }
+        _respuestas
+    }
+
+    public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
+    {
+
+        if ()
+        {
+
+        }
         
     }
 }
