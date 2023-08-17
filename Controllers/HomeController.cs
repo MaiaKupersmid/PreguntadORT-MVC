@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using PreguntadORT.Models;
+using TP7_PreguntadORT.Models;
 
 namespace PreguntadORT.Controllers;
 
@@ -15,18 +16,21 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
         return View();
     }
 
     public IActionResult ConfigurarJuego()
     {
-        return View();
+        Juego.InicializarJuego();
+        ViewBag.Categorias= Jugar.ObtenerCategorias();
+        ViewBag.dificultades= Jugar.ObtenerDificultades();
+        return RedirectToAction("ConfigurarJuego", "Home");
     }
 
     public IActionResult Comenzar(string username, int dificultad, int categoria)
     {
-        return View();
+        Juego.CargarPartida(username, dificultad, categoria);
+        return RedirectToAction("Jugar");
     }
 
     public IActionResult Jugar()
