@@ -2,6 +2,7 @@ namespace TP7_PreguntadORT.Models;
 public static class Juego 
 {
     private static string _username {get; set;}
+    private static string correct {get; set;}
     private static int _cont {get; set;}
     private static int _puntajeActual {get; set;}
     private static int _cantidadPreguntasCorrectas {get; set;}
@@ -16,6 +17,7 @@ public static class Juego
         _puntajeActual= 0;
         _cantidadPreguntasCorrectas= 0;
         _cont = 0;
+        _correct= "";
     }
 
     public static List<Categoria> ObtenerCategorias()
@@ -51,7 +53,7 @@ public static class Juego
         return respuestasMatch;
     }
 
-    public static bool VerificarRespuesta(int idPregunta, int idRespuesta)
+    public static int VerificarRespuesta(int idPregunta, int idRespuesta, ref string _correct) 
     {
         foreach (Respuestas r in respuestasMatch)
         {
@@ -63,6 +65,7 @@ public static class Juego
                 return true;
             }
         }
+        _correct = r.Correcta;
         return false;
     }
 }

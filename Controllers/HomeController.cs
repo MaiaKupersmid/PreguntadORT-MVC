@@ -22,26 +22,35 @@ public class HomeController : Controller
     public IActionResult ConfigurarJuego()
     {
         Juego.InicializarJuego();
-        ViewBag.Categorias= Jugar.ObtenerCategorias();
-        ViewBag.dificultades= Jugar.ObtenerDificultades();
-        return RedirectToAction("ConfigurarJuego", "Home");
+        ViewBag.Categorias= Juego.ObtenerCategorias();
+        ViewBag.dificultades= Juego.ObtenerDificultades();
+        return  View();
     }
 
     public IActionResult Comenzar(string username, int dificultad, int categoria)
     {
         Juego.CargarPartida(username, dificultad, categoria);
-        return RedirectToAction("Jugar");
+        return RedirectToAction("ConfigurarJuego", "Home");
     }
 
     public IActionResult Jugar()
     {
-        return View();
+        ViewBag.Pregunta= Juego.ObtenerProximaPregunta();
+        if (ViewBag.Pregunta == "NULL"){
+            return RedirectToAction("Fin", "Home");
+        }
+        else {
+        ViewBag.Respuestas= Juego.ObtenerProximasRespuestas(ViewBag.Pregunta.IdPregunta);
+        return RedirectToAction("Juego", "Home");
+        }
     }
 
     [HttpPost]
-    public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta)
+    public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, ref string _correct)
     {
-        return View();
+        ViewBag.CorrectaNo = Juego.VerificarRespuesta();
+        ViewBag.Correcta = _correct;
+        return RedirectToAction("Respuesta", "Home");
     }
 
 
