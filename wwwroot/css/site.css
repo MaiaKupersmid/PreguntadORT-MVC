@@ -1,22 +1,266 @@
-html {
-  font-size: 14px;
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
+/* -------------------------------------- GENERAL --------------------------------- */
 
 body {
-  margin-bottom: 60px;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+
+  background: url(/img/5937.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ul_nav{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.884);
+}
+
+li a:hover{
+  color: #03e9f4;
+}
+
+li a{
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  float: left;
+  font-family: 'CooperHewitt-Bold', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  font-size: medium;
+  text-transform: uppercase;
+  color: #FFF8EA;
+  background: rgba(0, 0, 0, 0.884);
+}
+
+/* -------------------------------------- BIEN Y JUEGO --------------------------------- */
+
+.card{
+  width: 75%;
+  height: auto;
+  align-items: center;
+  border: 0;
+  background-color: transparent !important;
+}
+
+.mainJuego{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card_body{
+  width: 100%; 
+  padding: 0;
+  color: #fff;
+}
+
+.card-body a {
+  width: 100%;
+  display: block;
+  padding: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.btn{
+  width: 100%;
+  background-color: #9977ff !important;
+  color: white !important;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.btn-success{
+  background-color: #35f866 !important;
+}
+
+.card-body a:hover {
+  background-color: #2980b9;
+}
+
+.imagen{
+  width: 10%;
+  padding: 18px;
+}
+
+.imagen, .card-body{
+  width: 40%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.card-title{
+  margin-top: 10px;
+  font-weight: 100;
+  color: white;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+
+/* -------------------------------------- CONFIGURACION Y FIN --------------------------------- */
+
+.login-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(147, 73, 216, 0.623);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+  border-radius: 10px;
+}
+
+.login-box h2 {
+  margin: 0 0 30px;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.login-box .user-box {
+  position: relative;
+}
+
+.login-box .user-box input {
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.login-box .user-box label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.login-box form a {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #03e9f4;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin: 5% 19% 0% 19%;
+  letter-spacing: 2px;
+}
+
+.login-box a:hover {
+  background: #03e9f4;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.login-box a span {
+  position: absolute;
+  align-items: center;
+}
+
+.checkboxes {
+  display: flex;
+  justify-content: center;
+}
+
+.checkboxes .dificultades,
+.checkboxes .categorias {
+  display: flex;
+  flex-direction: column;
+  align-items: auto;
+  margin: 10px;
+}
+
+.dificultades label, .categorias label, .titConf{
+  color:white;
+}
+
+.box-fin{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  color:white;
+  letter-spacing: 1px;
+  
+}
+
+/* -------------------------------------- INDEX --------------------------------- */
+
+.container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1%;
+}
+
+.title {
+  font-size: 90px;
+  font-weight: bold;
+  color: #cc56c6;
+  transition: color 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.title:hover {
+  color: #24c7dd;
+}
+
+@font-face{
+  font-family: 'NeonRetro';
+  src: url('https://www.fontspace.com/neon-retro-font-f89033');
+}
+
+.start-button {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #e93fe9;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'NeonRetro';
+}
+.start-button:hover {
+  background-color: #31b2c4;
+}
+
+.indexx{
+  background: url(/img/r.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }

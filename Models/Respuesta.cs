@@ -1,4 +1,4 @@
-namespace TP7_PreguntadORT.Models;
+
 public class Respuestas
 {
     public int IdRespuesta {get; set;}

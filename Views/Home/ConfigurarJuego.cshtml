@@ -1,0 +1,29 @@
+    <main>
+        <div class="login-box">
+            <form action='@Url.Action("Comenzar", "Home")' method="get">
+                <div class="user-box">
+                    <input type="text" name="username" required="" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                
+                <div class="checkboxes">
+                    <div class="dificultades">
+                        <p class="titConf">Dificultades:</p>
+                        <label><input type="radio" name="dificultad" value="-1"> Todas</label>
+                        @foreach(Dificultades d in ViewBag.Dificultades)
+                        {
+                            <label><input  value="@d.IdDificultad" type="radio" name="dificultad" id=" ">@d.Nombre</label>
+                        }
+                    </div>
+                    <div class="categorias">
+                        <p class="titConf">Categorias:</p>
+                        <label><input type="radio" name="categoria" value="-1"> Todas</label>
+                        @foreach(Categoria c in ViewBag.Categorias)
+                        {
+                            <label><input value="@c.IdCategoria" type="radio" name="categoria" id=" ">@c.Nombre</label>
+                        }
+                    </div>
+                </div>
+                <input type="submit" value="Iniciar juego" name="cb-categoria-arte">
+            </form>
+        </div>
+    </main>
