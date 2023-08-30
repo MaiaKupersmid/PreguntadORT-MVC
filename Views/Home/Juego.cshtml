@@ -1,15 +1,26 @@
 <body>
     <main class = "mainJuego"> 
         <div class="card">
-            <h3 class="card-title">¿Cuantas especialidades posee la sede ORT Almagro?</h3>
-            <div class="imagen">
-                <img class="card-img-top" src="img/ort.jpg" alt="Card image cap">
-            </div>
+            <h3 class="card-title">@ViewBag.Pregunta.Enunciado</h3>
+            @if(ViewBag.Pregunta.Foto != "NULL")
+            {
+               <div class="imagen">
+                    <img class="card-img-top" src="ViewBag.Pregunta.Foto" alt="Card image cap">
+                </div>
+            }else{<img class="card-img-top" src="/img/ort.jpg" alt="Card image cap">}
+
             <div class="card-body">
-                <a href="#" class="btn btn-primary">8 Especialidades</a>
-                <a href="#" class="btn btn-primary">7 Especialidades</a>
-                <a href="#" class="btn btn-primary">6 Especialidades</a>
-                <a href="#" class="btn btn-primary">5 Especialidades</a>
+                <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+                    <div class="checkboxes">
+                        <div class="categorias">
+                            @foreach(Respuestas r in ViewBag.Respuestas)
+                            {
+                                <label><input value="@r.IdRespuesta" type="radio" name="categoria" id=" ">@r.Contenido</label>
+                            }
+                        </div>
+                    </div>
+                    <input type="submit" value="validar respuesta" name="cb-categoria-arte">
+                </form>
             </div>
         </div>
     </main>

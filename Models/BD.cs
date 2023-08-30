@@ -39,15 +39,15 @@ public static class BD
         return ListadoPreguntas;
     }
 
-    public static List<Respuestas> ObtenerRespuestas(Preguntas pregunta)
+    public static List<Respuestas> ObtenerRespuestas(int idp)
     {
         List<Respuestas> ListadoRespuestas = new List<Respuestas>();
         using (SqlConnection BD = new SqlConnection(_connectionString))
         {
             string sql = "exec sp_ObtenerRespuestas @IdPregunta;";
-            ListadoRespuestas = BD.Query<Respuestas>(sql, new { IdPregunta = pregunta.IdPregunta }).ToList();
+            ListadoRespuestas = BD.Query<Respuestas>(sql, new { IdPregunta = idp }).ToList();
         }
         return ListadoRespuestas; 
-        //no se si esta bine 
+  
     }
 }

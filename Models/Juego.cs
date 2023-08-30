@@ -7,7 +7,6 @@ public static class Juego
     private static int _puntajeActual {get; set;}
     private static int _cantidadPreguntasCorrectas {get; set;}
     private static List<Preguntas> _preguntas {get; set;}
-    private static List<Respuestas> _respuestas {get; set;}
     private static List<Respuestas> respuestasMatch = new List<Respuestas>();
 
 
@@ -33,7 +32,7 @@ public static class Juego
     public static void CargarPartida(string username, int dificultad, int categoria)
     {
         _preguntas = BD.ObtenerPreguntas(dificultad, categoria);
-        _respuestas = BD.ObtenerRespuestas(_preguntas[_cont]);
+        
     }
 
     public static Preguntas ObtenerProximaPregunta()
@@ -41,20 +40,15 @@ public static class Juego
         return _preguntas[_cont];
     }
 
-    public static List<Respuestas> ObtenerProximasRespuestas(int idPregunta)
+    public static List<Respuestas> ObtenerRespuestas(int idPregunta)
     {
-        foreach (Respuestas r in _respuestas)
-        {
-            if(r.IdPregunta == idPregunta)
-            {
-                respuestasMatch.Add(r);
-            }
-        }
-        return respuestasMatch;
+        return BD.ObtenerRespuestas(idPregunta);
     }
 
-    public static bool VerificarRespuesta(int idPregunta, int idRespuesta, ref string _correct) 
+    public static bool VeriRespuesta(int idPregunta, int idRespuesta, string _correct) 
     {
+       /// respuestasMatch = BD.ObtenerPreguntas(dificultad, categoria);
+
         foreach (Respuestas r in respuestasMatch)
         {
             if(r.Correcta)
@@ -78,4 +72,6 @@ public static class Juego
         }
         return false;
     }
+
+    /// TIENE QUE IR A LA BASE DE DATOS A CHEQUEAR LAS RESP Y VOLVER CON LA CORRECTA 
 }

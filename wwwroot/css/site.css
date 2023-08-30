@@ -253,7 +253,6 @@ footer{
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-family: 'NeonRetro';
 }
 .start-button:hover {
   background-color: #31b2c4;
