@@ -2,7 +2,7 @@ namespace TP7_PreguntadORT.Models;
 public static class Juego 
 {
     private static string _username {get; set;}
-    private static string _correct {get; set;}
+    private static int _correct {get; set;}
     private static int _cont {get; set;}
     private static int _puntajeActual {get; set;}
     private static int _cantidadPreguntasCorrectas {get; set;}
@@ -16,7 +16,7 @@ public static class Juego
         _puntajeActual= 0;
         _cantidadPreguntasCorrectas= 0;
         _cont = 0;
-        _correct= "";
+        _correct= 0;
     }
 
     public static List<Categoria> ObtenerCategorias()
@@ -32,7 +32,6 @@ public static class Juego
     public static void CargarPartida(string username, int dificultad, int categoria)
     {
         _preguntas = BD.ObtenerPreguntas(dificultad, categoria);
-        
     }
 
     public static Preguntas ObtenerProximaPregunta()
@@ -45,33 +44,23 @@ public static class Juego
         return BD.ObtenerRespuestas(idPregunta);
     }
 
-    public static bool VeriRespuesta(int idPregunta, int idRespuesta, string _correct) 
+    public static bool VeriRespuesta(int idPregunta, int idRespuesta, ref int _correct) 
     {
-       /// respuestasMatch = BD.ObtenerPreguntas(dificultad, categoria);
-
-        foreach (Respuestas r in respuestasMatch)
+        bool si= false;
+        foreach (Respuestas c in BD.ObtenerRespuestas(idPregunta))
         {
-            if(r.Correcta)
+            if(c.IdRespuesta == idRespuesta)
             {
-                _puntajeActual ++;
-                _cantidadPreguntasCorrectas ++;
-                _cont ++;
-                return true;
-            }
-            else
-            {
-                foreach (Respuestas c in respuestasMatch)
+                if(c.Correcta == true)
                 {
-                    if(c.Correcta)
-                    {
-                        _correct = c.Contenido;
-                    }
-                }
-                return false;
+                    _puntajeActual ++;
+                    _cantidadPreguntasCorrectas ++;
+                    _cont ++;
+                    _correct= c.IdRespuesta;
+                    si=true;
+                }else{si=false;}
             }
         }
-        return false;
+        return si;
     }
-
-    /// TIENE QUE IR A LA BASE DE DATOS A CHEQUEAR LAS RESP Y VOLVER CON LA CORRECTA 
 }

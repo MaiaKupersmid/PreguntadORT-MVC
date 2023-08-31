@@ -1,4 +1,4 @@
-<body>
+
     <main class = "mainJuego"> 
         <div class="card">
             <h3 class="card-title">@ViewBag.Pregunta.Enunciado</h3>
@@ -7,15 +7,20 @@
                <div class="imagen">
                     <img class="card-img-top" src="ViewBag.Pregunta.Foto" alt="Card image cap">
                 </div>
-            }else{<img class="card-img-top" src="/img/ort.jpg" alt="Card image cap">}
+            } 
+            else
+            {
+                <img class="card-img-top" src="/img/ort.jpg" alt="Card image cap">
+            }
 
             <div class="card-body">
                 <form action='@Url.Action("VerificarRespuesta", "Home")' method="post">
+              <input type="hidden" name = "idPregunta" value = "@ViewBag.Pregunta.IdPregunta">
                     <div class="checkboxes">
                         <div class="categorias">
                             @foreach(Respuestas r in ViewBag.Respuestas)
                             {
-                                <label><input value="@r.IdRespuesta" type="radio" name="categoria" id=" ">@r.Contenido</label>
+                                <label><input value="@r.IdRespuesta" type="radio" name="IdRespuesta" id=" ">@r.Contenido</label>
                             }
                         </div>
                     </div>
@@ -24,4 +29,3 @@
             </div>
         </div>
     </main>
-</body>

@@ -33,8 +33,8 @@ public static class BD
         List<Preguntas> ListadoPreguntas = new List<Preguntas>();
         using (SqlConnection BD = new SqlConnection(_connectionString))
         {
-            string sql = "exec sp_ObtenerPreguntas @idDificultd, @idCategoria;";
-            ListadoPreguntas = BD.Query<Preguntas>(sql, new { idDificultd = IdDificultad, idCategoria = IdCategoria }).ToList();
+            string sql = "exec sp_ObtenerPreguntas @Dificultad, @Categoria;";
+            ListadoPreguntas = BD.Query<Preguntas>(sql, new { Dificultad = IdDificultad, Categoria = IdCategoria }).ToList();
         }
         return ListadoPreguntas;
     }
