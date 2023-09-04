@@ -1,5 +1,20 @@
-<div class="card-body">
-    <div class="checkboxes">
-    
-    </div>
-</div>
+<body>
+    <main>
+        <div class="login-box">
+            <form action='@Url.Action("Jugar", "Home")' method="post">
+                <div class="box-fin">
+                    <h4>¡¡CORRECTO!!</h4>
+                    <p>User: @ViewBag.username</p>
+                    <p>Puntos: </p>
+                </div>
+                <a asp-area="" asp-controller="Home" asp-action="Jugar">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Continuar
+                </a>
+            </form>
+        </div>
+    </main>
+</body>

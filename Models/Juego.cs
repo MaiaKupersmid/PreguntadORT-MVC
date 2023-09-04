@@ -36,7 +36,14 @@ public static class Juego
 
     public static Preguntas ObtenerProximaPregunta()
     {
-        return _preguntas[_cont];
+        if (_preguntas != null && _cont >= 0 && _cont < _preguntas.Count)
+        {
+            return _preguntas[_cont];
+        }
+        else
+        {
+            return null;
+        }
     }
 
     public static List<Respuestas> ObtenerRespuestas(int idPregunta)

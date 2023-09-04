@@ -43,6 +43,7 @@ public class HomeController : Controller
             return View("Fin");
         }
         else {
+            
             ViewBag.Respuestas = Juego.ObtenerRespuestas(ViewBag.Pregunta.IdPregunta);
             return View("Juego");
         }
