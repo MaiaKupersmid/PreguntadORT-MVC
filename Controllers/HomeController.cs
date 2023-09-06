@@ -29,21 +29,20 @@ public class HomeController : Controller
 
     public IActionResult Comenzar(string username, int dificultad, int categoria)
     {
-        Juego.CargarPartida(username, dificultad, categoria);
-
-        ViewBag.username = username;
-        
+        Juego.CargarPartida(username, dificultad, categoria); 
+        ViewBag.username = Juego.ObtenerUser();
         return RedirectToAction("Jugar", "Home");
     }
 
     public IActionResult Jugar()
     {
+        ViewBag.username = Juego.ObtenerUser();
+        ViewBag.puntaje = Juego.ObtenerPuntaje();
         ViewBag.Pregunta= Juego.ObtenerProximaPregunta();
         if (ViewBag.Pregunta == null){
             return View("Fin");
         }
         else {
-            
             ViewBag.Respuestas = Juego.ObtenerRespuestas(ViewBag.Pregunta.IdPregunta);
             return View("Juego");
         }
@@ -54,6 +53,8 @@ public class HomeController : Controller
     public IActionResult VerificarRespuesta(int idPregunta, int idRespuesta, int _correct)
     {
         bool si = Juego.VeriRespuesta(idPregunta, idRespuesta, ref _correct);
+        ViewBag.username = Juego.ObtenerUser();
+        ViewBag.puntaje = Juego.ObtenerPuntaje();
         ViewBag.Correcta = _correct;
         if(si)
         {

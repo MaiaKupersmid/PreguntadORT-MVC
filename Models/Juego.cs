@@ -12,7 +12,7 @@ public static class Juego
 
     public static void InicializarJuego()
     {
-        _username= "";
+        _username= "jjjj";
         _puntajeActual= 0;
         _cantidadPreguntasCorrectas= 0;
         _cont = 0;
@@ -32,6 +32,17 @@ public static class Juego
     public static void CargarPartida(string username, int dificultad, int categoria)
     {
         _preguntas = BD.ObtenerPreguntas(dificultad, categoria);
+        _username = username;
+    }
+
+    public static string ObtenerUser()
+    {
+        return _username;
+    }
+    
+    public static int ObtenerPuntaje()
+    {
+        return _puntajeActual;
     }
 
     public static Preguntas ObtenerProximaPregunta()
